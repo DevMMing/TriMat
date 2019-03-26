@@ -80,7 +80,7 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
 
         elif line == 'box':
             #print 'BOX\t' + str(args)
-            add_box(edges,
+            add_box(polygons,
                     float(args[0]), float(args[1]), float(args[2]),
                     float(args[3]), float(args[4]), float(args[5]))
 
@@ -139,8 +139,9 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
             
         elif line == 'display' or line == 'save':
             clear_screen(screen)
+            draw_polygons(polygons,screen,color)
+            print_matrix(polygons)
             draw_lines(edges, screen, color)
-
             if line == 'display':
                 display(screen)
             else:
