@@ -68,12 +68,12 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
             add_polygon(polygons, points[index][0],
                      points[index][1],
                      points[index][2],
-                     points[index-1][0],
-                     points[index-1][1],
-                     points[index-1][2],
-                     points[index-step-1][0],
-                     points[index-step-1][1],
-                     points[index-step-1][2] )
+                     points[index-step+1][0],
+                     points[index-step+1][1],
+                     points[index-step+1][2],
+                     points[index-step][0],
+                     points[index-step][1],
+                     points[index-step][2] )
 
 def generate_sphere( cx, cy, cz, r, step ):
     points = []
@@ -111,9 +111,9 @@ def add_torus(polygons, cx, cy, cz, r0, r1, step ):
             add_polygon(polygons, points[index][0],
                      points[index][1],
                      points[index][2],
-                     points[index-11][0],
-                     points[index-1][1],
-                     points[index-1][2],
+                     points[index-step+1][0],
+                     points[index-step+1][1],
+                     points[index-step+1][2],
                      points[index-step][0],
                      points[index-step][1],
                      points[index-step][2] )
