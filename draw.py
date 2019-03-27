@@ -1,6 +1,6 @@
 from display import *
 from matrix import *
-
+from gmath import *
 
 def add_polygon( polygons, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point(polygons,x0,y0,z0)
@@ -12,22 +12,28 @@ def draw_polygons( polygons, screen, color ):
         print 'Need at least 3 points to draw'
         return
     point = 0
+    v=[0,0,1]
     while point < len(polygons) - 1:
-        draw_line( int(polygons[point][0]),
-                   int(polygons[point][1]),
-                   int(polygons[point+1][0]),
-                   int(polygons[point+1][1]),
-                   screen, color)
-        draw_line( int(polygons[point+1][0]),
-                   int(polygons[point+1][1]),
-                   int(polygons[point+2][0]),
-                   int(polygons[point+2][1]),
-                   screen, color)
-        draw_line( int(polygons[point+2][0]),
-                   int(polygons[point+2][1]),
-                   int(polygons[point][0]),
-                   int(polygons[point][1]),
-                   screen, color) 
+        n=calculate_normal(polygons,point)
+        dot=dot_product(n,v)
+        norm_n=normalize(n)
+        norm_v=normalize(v)
+        if dot/(norm_n*norm_v)>0:
+            draw_line( int(polygons[point][0]),
+                       int(polygons[point][1]),
+                       int(polygons[point+1][0]),
+                       int(polygons[point+1][1]),
+                       screen, color)
+            draw_line( int(polygons[point+1][0]),
+                       int(polygons[point+1][1]),
+                       int(polygons[point+2][0]),
+                       int(polygons[point+2][1]),
+                       screen, color)
+            draw_line( int(polygons[point+2][0]),
+                       int(polygons[point+2][1]),
+                       int(polygons[point][0]),
+                       int(polygons[point][1]),
+                       screen, color) 
         point+= 3
 
 def add_box( polygons, x, y, z, width, height, depth ):
