@@ -16,9 +16,9 @@ def draw_polygons( polygons, screen, color ):
     while point < len(polygons) - 1:
         n=calculate_normal(polygons,point)
         dot=dot_product(n,v)
-        norm_n=normalize(n)
-        norm_v=normalize(v)
-        if dot/(norm_n*norm_v)>0:
+        norm_n=magnitude(n)
+        norm_v=magnitude(v)
+        if norm_n!= 0 and norm_v!=0 and dot/(norm_n*norm_v)>0:
             draw_line( int(polygons[point][0]),
                        int(polygons[point][1]),
                        int(polygons[point+1][0]),
