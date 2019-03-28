@@ -15,10 +15,7 @@ def draw_polygons( polygons, screen, color ):
     v=[0,0,1]
     while point < len(polygons) - 1:
         n=calculate_normal(polygons,point)
-        dot=dot_product(n,v)
-        norm_n=magnitude(n)
-        norm_v=magnitude(v)
-        if norm_n!= 0 and norm_v!=0 and dot/(norm_n*norm_v)>0:
+        if n[2]>0:
             draw_line( int(polygons[point][0]),
                        int(polygons[point][1]),
                        int(polygons[point+1][0]),
@@ -54,8 +51,8 @@ def add_box( polygons, x, y, z, width, height, depth ):
     add_polygon(polygons, x1, y1, z, x1, y1, z1, x, y1, z1)
 
     #sides
-    add_polygon(polygons, x1, y, z, x1, y1, z1, x1, y1, z)
-    add_polygon(polygons, x1, y, z, x1, y, z1, x1, y1, z1)
+    add_polygon(polygons, x1, y, z, x1, y1, z, x1, y1, z1)
+    add_polygon(polygons, x1, y, z, x1, y1, z1, x1, y, z1)
     add_polygon(polygons, x, y, z1, x1, y1, z1, x, y1, z1)
     add_polygon(polygons, x, y, z1, x1, y, z1, x1, y1, z1)
 
