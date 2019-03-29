@@ -1,0 +1,24 @@
+ident
+torus
+-165 -25 0 25 45
+torus
+-165 25 0 25 35
+torus
+-165 -75 0 25 55
+box
+-25 100 0 20 200 20
+apply
+box
+-175 100 0 20 200 20
+apply
+box
+125 100 0 20 200 20
+box
+-220 -100 0 410 50 50
+rotate
+x 20
+move
+250 250 0
+apply
+save
+shape.png
